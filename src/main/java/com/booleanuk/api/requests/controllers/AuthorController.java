@@ -2,6 +2,7 @@ package com.booleanuk.api.requests.controllers;
 
 import com.booleanuk.api.requests.model.Author;
 import com.booleanuk.api.requests.repositories.AuthorRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,11 +27,13 @@ public class AuthorController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Author create(@RequestBody Author author)    {
         return this.theAuthors.createAuthor(author);
     }
 
     @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public Author update(@PathVariable int id, @RequestBody Author author)  {
         return this.theAuthors.updateAuthor(id, author);
     }
